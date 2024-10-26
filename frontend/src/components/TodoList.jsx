@@ -32,22 +32,25 @@ export default function TodoList() {
   };
 
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-2xl font-bold">ToDo List</h1>
+    <div className="max-w-md mx-auto mt-10 p-5 bg-gray-100 rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">ToDo List</h1>
       <div className="flex mt-4 space-x-2">
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="New task"
-          className="border p-2 flex-grow"
+          className="border border-gray-300 p-3 flex-grow rounded focus:outline-none focus:ring-2 focus:ring-green-500"
         />
-        <button onClick={handleAddTodo} className="bg-green-500 text-white px-4 py-2 rounded">
+        <button 
+          onClick={handleAddTodo} 
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"
+        >
           Add
         </button>
       </div>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-      <div className="mt-4">
+      {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
+      <div className="mt-4 space-y-2 max-h-60 overflow-y-auto">
         {todos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
